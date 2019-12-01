@@ -35,12 +35,17 @@ public:
     }
     void setModel(string model){
         this->model = model;
+
     }
     void toString(){
         cout << getBrand() << " " << model << endl;
     }
 };
 int main() {
+    Auto a("bmw");
+    a.toString();
 
+    Auto *h = new Hybrid("bmw","HX3");
+    h->toString();
     return 0;
 }
