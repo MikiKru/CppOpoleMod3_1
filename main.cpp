@@ -10,6 +10,7 @@ class Auto{
 private:
     string brand;
 public:
+    Auto(){}
     Auto(string brand){
         this->brand = brand;
     }
@@ -30,6 +31,7 @@ public:
     Hybrid(string brand, string model) : Auto(brand){
         this->model = model;
     }
+
     string getModel(){
         return model;
     }
@@ -37,15 +39,60 @@ public:
         this->model = model;
 
     }
+    void toString(string brand){
+        cout << brand << " " << model << endl;
+    }
     void toString(){
         cout << getBrand() << " " << model << endl;
     }
 };
-int main() {
-    Auto a("bmw");
-    a.toString();
 
-    Auto *h = new Hybrid("bmw","HX3");
-    h->toString();
+class Course{
+private:
+    string name, category;
+    int participants;
+    string date;
+    string trainer;
+public:
+    Course(){
+        this->name = "";
+        this->category = "";
+        this->participants = 0;
+        this->date = "";
+        this->trainer = "";
+    }
+    Course(string name, string category, int participants, string date, string trainer){
+        this->name = name;
+        this->category = category;
+        this->participants = participants;
+        this->date = date;
+        this->trainer = trainer;
+    }
+    Course(string name, string category, int participants, string date){
+        this->name = name;
+        this->category = category;
+        this->participants = participants;
+        this->date = date;
+        this->trainer = "";
+    }
+    void incrementParticipants(){
+        this->participants++;
+    }
+    void decrementParticipants(){
+        this->participants--;
+    }
+    void toString(){
+        cout << "name " << name << " category: " << category <<
+        " participants: " << participants << " date: " << date << " trainer: " << trainer << endl;
+    }
+};
+
+int main() {
+    Course c0;
+    c0.toString();
+    Course c1("C++", "IT", 10, "2020-01-01", "MK");
+    c1.toString();
+    Course c2("C++", "IT", 10, "2020-01-01");
+    c2.toString();
     return 0;
 }
