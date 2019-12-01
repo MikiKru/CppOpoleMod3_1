@@ -85,14 +85,46 @@ public:
         cout << "name " << name << " category: " << category <<
         " participants: " << participants << " date: " << date << " trainer: " << trainer << endl;
     }
+    string getName(){
+        return name;
+    }
+};
+class CourseController{
+private:
+    Course courses[100];
+    int index = 0;
+public:
+    void getCourses(){
+        for (int i = 0; i < index; ++i) {
+            courses[i].toString();
+        }
+    }
+    Course getCourseByName(string name){
+        for (int i = 0; i < index; ++i) {
+            if(courses[i].getName() == name){
+                return courses[i];
+            }
+        }
+        Course c;
+        return c;
+    }
+    void addCourse(string name, string category, int participants, string date, string trainer){
+        Course c(name,category,participants,date,trainer);
+        courses[index] = c;
+        cout << "dodano szkolenie" << endl;
+        index++;
+    }
+    void addParticipant(string name){
+        Course c = getCourseByName(name);
+        c.incrementParticipants();
+        cout << "dodano uczestnika" << endl;
+    }
 };
 
 int main() {
-    Course c0;
-    c0.toString();
-    Course c1("C++", "IT", 10, "2020-01-01", "MK");
-    c1.toString();
-    Course c2("C++", "IT", 10, "2020-01-01");
-    c2.toString();
+    CourseController cc;
+    cc.addCourse("x","x",5,"x", "x");
+    cc.addParticipant("x");
+    cc.getCourses();
     return 0;
 }
