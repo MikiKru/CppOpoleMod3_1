@@ -163,19 +163,39 @@ public:
         this-> head = head;
     }
     void depToString(){
+        cout << "============================" << endl;
         toString(); // wywołanie metody toString z klasy Org
         cout << "Head info: " << this->head << endl;
     }
 };
+class Algorithms{
+public:
+    bool isPrimary(int number){
+        // liczba podzielna bez reszty tylko przez 1 i samą siebie
+        if(number == 2){
+            return true;
+        }
+        for(int i = 2; i < number; i++){
+            if(number % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    void getNPrimaryNumbers(int n){     // n - ilość szukanych liczb pierwszych
+        int foundedPrimaryNumbers= 0;   // licznik znalezionych liczb pierwszych
+        for(int i = 2; foundedPrimaryNumbers < n; i++){
+            // wywołanie funkcji sprawdzającej czy liczba jest pierwsza
+            if(isPrimary(i)){
+                cout << i << " ";
+                foundedPrimaryNumbers++;    // każde znalezienie inkrementuje licznik
+            }
+        }
+    }
+};
 int main() {
-    Org pnt("PNT", 300);
-    pnt.toString();
-    Dep marketing("PNT", 100, "Jan Kowalski");
-    Dep administration("PNT", 150, "Janusz Serwer");
-    Dep software("PNT", 50, "Mariusz Zima");
-    marketing.depToString();
-    administration.depToString();
-    software.depToString();
+    Algorithms a;
+    a.getNPrimaryNumbers(10);
     return 0;
 }
 
