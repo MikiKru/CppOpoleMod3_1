@@ -271,6 +271,7 @@ public:
     // **@**
     //****@**
     void drawChristmasTree(int n){
+        srand(time(NULL));
         for(int i = 1; i < 2*n; i = i + 2){
 
             for (int k = 1; k <= (2*n - i)/2; k++) {
@@ -278,11 +279,12 @@ public:
             }
             // dodawanie gwiazdek
             for (int j = 1; j <= i; j++) {
-                string bombs [] = {"O","@","o"};
+                string bubbles [] = {"O","?","o", "*", "*", "*","*"};
+                int index = rand() % 7;
                 if(i == 1) {
                     cout << "+";
                 } else {
-                    cout << "*";
+                    cout << bubbles[index];
                 }
             }
             cout << endl;
