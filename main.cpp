@@ -3,6 +3,7 @@
 #include <cmath>
 #include <cstdlib>
 #include "time.h"
+#include <fstream>  // operacje na plikach
 
 using namespace std;
 
@@ -226,7 +227,7 @@ public:
         int cumSum = 0;
         for (int i = 1; i < number; i++) {
             if (number % i == 0) {
-                cumSum += i;        // jeśłi dzielnik dzieli się bez reszty przez liczbę to dodajemy go do sumy skumulowanej
+                cumSum += i;        // jeśli dzielnik dzieli się bez reszty przez liczbę to dodajemy go do sumy skumulowanej
             }
         }
         return cumSum;
@@ -235,11 +236,32 @@ public:
         return number == sumOfDiv(number);  // porównanie liczby z sumą dizelników zwracaną przez metodę sumOfDiv()
     }
 };
+    void fileOperations(){
+
+//        ofstream: Stream class to write on files
+//        ifstream: Stream class to read from files
+//        fstream: Stream class to both read and write from/to files.
+
+        ofstream myFile;         // obiekt do obsługi plików -> daje dostęp do metod operujących na systemach plikowych
+        myFile.open("myFile.txt");  // utworzy plik o nazwie myFile.txt w trybie odczyt lub zapis
+
+
+        if(myFile.is_open()){
+            cout << "plik jest otwarty" << endl;
+            myFile << "text do pliku";
+        } else {
+            cout << "plik zostal zamkniety" << endl;
+        }
+        myFile.close();
+//        if(myFile.good()){
+//            cout << "Plik został poprawnie utworzony" << endl;
+//        } else {
+//            cout << "Ups! Cos poszlo nie tak!" << endl;
+//        }
+    }
 
 int main() {
-    Algorithms a;
-//    a.getNPrimaryNumbers(10);
-    cout << a.isPerfectNumber(6) << endl;
+    fileOperations();
     return 0;
 }
 
