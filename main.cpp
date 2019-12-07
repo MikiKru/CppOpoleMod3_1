@@ -369,7 +369,7 @@ void fileNameValid(){
     string fileName;
     try {
         cout << "Podaj nazwe pliku" << endl;
-        cin >> fileName;
+        getline(cin, fileName);
         ifstream file;
         file.open(fileName + ".txt");
         if (file.good()) {
