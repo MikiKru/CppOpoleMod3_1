@@ -257,7 +257,12 @@ public:
         myFile.close();         // zamknięcie strumienia danych plikowych
 
         ifstream readMyFile;    // obiekt do obsługi odczytu z pliku
-        
+        readMyFile.open("plik.txt");
+        string line;            // zmienna do której wprowadzimy zawartość z pliku
+        while(getline(readMyFile, line)){
+            cout << line << endl; // przeniesienie załej zawartości z pliku do zmiennej
+        }
+        readMyFile.close();
     }
 
 int main() {
