@@ -259,14 +259,29 @@ public:
         ifstream readMyFile;    // obiekt do obsługi odczytu z pliku
         readMyFile.open("plik.txt");
         string line;            // zmienna do której wprowadzimy zawartość z pliku
+        cout << "Zawartośc pliku plik.txt" << endl;
         while(getline(readMyFile, line)){
             cout << line << endl; // przeniesienie załej zawartości z pliku do zmiennej
         }
         readMyFile.close();
     }
+    //   @
+    //  **@
+    //  ma
+    // **@**
+    //****@**
+    void drawChristmasTree(int n){
+
+        for(int i = 1; i < 2*n; i = i + 2){
+            for (int j = 1; j <= i; j++) {
+                cout << "*";
+            }
+            cout << endl;
+        }
+    }
 
 int main() {
-    fileOperations();
+    drawChristmasTree(5);
     return 0;
 }
 
