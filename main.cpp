@@ -299,13 +299,17 @@ public:
         return christmasTree;
     }
     void saveChristamsTree(string christmasTree){
-
+        ofstream toFile;
+        toFile.open("christmasTree.txt");
+        toFile << christmasTree;
+        toFile.close();
+        cout << "Choinka zostala zarchiwizowana" << endl;
     }
 
 
 
 int main() {
-    drawChristmasTree(10);
+    saveChristamsTree(drawChristmasTree(10));
     return 0;
 }
 
