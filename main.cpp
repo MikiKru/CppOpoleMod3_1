@@ -270,33 +270,39 @@ public:
     //  ma
     // **@**
     //****@**
-    void drawChristmasTree(int n){
+    string drawChristmasTree(int n){
         srand(time(NULL));
+        string christmasTree = "";
         for(int i = 1; i < 2*n; i = i + 2){
-
             for (int k = 1; k <= (2*n - i)/2; k++) {
-                cout << " ";
+                christmasTree += " ";
             }
             // dodawanie gwiazdek
             for (int j = 1; j <= i; j++) {
                 string bubbles [] = {"O","?","o", "*", "*", "*","*"};
                 int index = rand() % 7;
                 if(i == 1) {
-                    cout << "+";
+                    christmasTree += "+";
                 } else {
-                    cout << bubbles[index];
+                    christmasTree += bubbles[index];
                 }
             }
-            cout << endl;
+            christmasTree += "\n";
             // noga
             if(i == 2*n - 1){
                 for (int x = 1; x <= (2*n - 1)/2; x++) {
-                    cout << " ";
+                    christmasTree += " ";
                 }
-                cout << "H";
+                christmasTree += "H";
             }
         }
+        return christmasTree;
     }
+    void saveChristamsTree(string christmasTree){
+
+    }
+
+
 
 int main() {
     drawChristmasTree(10);
