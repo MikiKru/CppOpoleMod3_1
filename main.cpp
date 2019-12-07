@@ -121,10 +121,55 @@ public:
     }
 };
 
+class Org{
+private:
+    string name;
+    int noEmployees;
+public:
+    // gettery -> pobierają aktualną zawartość zmiennej
+    string getName(){
+        return this->name;  // zwraca aktualną wartość zmiennej name
+    }
+    int getNoEmployees(){
+        return this->noEmployees;
+    }
+    // setter -> modyfikuje aktulną warość zmiennej na tą podaną w argumencie metody
+    void setName(string name){
+        this->name = name;
+    }
+    void setNoEmployees(){
+        this->noEmployees = noEmployees;
+    }
+    Org(string name, int noEmployees){          // Wywoływany jest automatycznie w momencie tworzeniea obiektu
+        this->name = name;
+        this->noEmployees = noEmployees;
+    }
+    void toString() {                            // napisowa reprezentacja obiektu -> wartości jego pol kalsowych
+        cout << "Organization name: " << this->name << endl;
+        cout << "Number of employees: " << this->noEmployees << endl;
+    }
+};
+
 int main() {
-    CourseController cc;
-    cc.addCourse("x","x",5,"x", "x");
-    cc.addParticipant("x");
-    cc.getCourses();
+    Org pnt("PNT", 300);
+    pnt.toString();
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
