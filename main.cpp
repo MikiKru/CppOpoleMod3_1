@@ -6,196 +6,242 @@
 
 using namespace std;
 
-class Auto{
+class Auto {
 private:
     string brand;
 public:
-    Auto(){}
-    Auto(string brand){
+    Auto() {}
+
+    Auto(string brand) {
         this->brand = brand;
     }
-    string getBrand(){
+
+    string getBrand() {
         return brand;
     }
-    void setBrand(string brand){
+
+    void setBrand(string brand) {
         this->brand = brand;
     }
-    void toString(){
+
+    void toString() {
         cout << brand << endl;
     }
 };
-class Hybrid : public Auto{
+
+class Hybrid : public Auto {
 private:
     string model;
 public:
-    Hybrid(string brand, string model) : Auto(brand){
+    Hybrid(string brand, string model) : Auto(brand) {
         this->model = model;
     }
 
-    string getModel(){
+    string getModel() {
         return model;
     }
-    void setModel(string model){
+
+    void setModel(string model) {
         this->model = model;
 
     }
-    void toString(string brand){
+
+    void toString(string brand) {
         cout << brand << " " << model << endl;
     }
-    void toString(){
+
+    void toString() {
         cout << getBrand() << " " << model << endl;
     }
 };
 
-class Course{
+class Course {
 private:
     string name, category;
     int participants;
     string date;
     string trainer;
 public:
-    Course(){
+    Course() {
         this->name = "";
         this->category = "";
         this->participants = 0;
         this->date = "";
         this->trainer = "";
     }
-    Course(string name, string category, int participants, string date, string trainer){
+
+    Course(string name, string category, int participants, string date, string trainer) {
         this->name = name;
         this->category = category;
         this->participants = participants;
         this->date = date;
         this->trainer = trainer;
     }
-    Course(string name, string category, int participants, string date){
+
+    Course(string name, string category, int participants, string date) {
         this->name = name;
         this->category = category;
         this->participants = participants;
         this->date = date;
         this->trainer = "";
     }
-    void incrementParticipants(){
+
+    void incrementParticipants() {
         this->participants++;
     }
-    void decrementParticipants(){
+
+    void decrementParticipants() {
         this->participants--;
     }
-    void toString(){
+
+    void toString() {
         cout << "name " << name << " category: " << category <<
-        " participants: " << participants << " date: " << date << " trainer: " << trainer << endl;
+             " participants: " << participants << " date: " << date << " trainer: " << trainer << endl;
     }
-    string getName(){
+
+    string getName() {
         return name;
     }
 };
-class CourseController{
+
+class CourseController {
 private:
     Course courses[100];
     int index = 0;
 public:
-    void getCourses(){
+    void getCourses() {
         for (int i = 0; i < index; ++i) {
             courses[i].toString();
         }
     }
-    Course getCourseByName(string name){
+
+    Course getCourseByName(string name) {
         for (int i = 0; i < index; ++i) {
-            if(courses[i].getName() == name){
+            if (courses[i].getName() == name) {
                 return courses[i];
             }
         }
         Course c;
         return c;
     }
-    void addCourse(string name, string category, int participants, string date, string trainer){
-        Course c(name,category,participants,date,trainer);
+
+    void addCourse(string name, string category, int participants, string date, string trainer) {
+        Course c(name, category, participants, date, trainer);
         courses[index] = c;
         cout << "dodano szkolenie" << endl;
         index++;
     }
-    void addParticipant(string name){
+
+    void addParticipant(string name) {
         Course c = getCourseByName(name);
         c.incrementParticipants();
         cout << "dodano uczestnika" << endl;
     }
 };
 
-class Org{
+class Org {
 private:
     string name;
     int noEmployees;
 public:
     // gettery -> pobierają aktualną zawartość zmiennej
-    string getName(){
+    string getName() {
         return this->name;  // zwraca aktualną wartość zmiennej name
     }
-    int getNoEmployees(){
+
+    int getNoEmployees() {
         return this->noEmployees;
     }
+
     // setter -> modyfikuje aktulną warość zmiennej na tą podaną w argumencie metody
-    void setName(string name){
+    void setName(string name) {
         this->name = name;
     }
-    void setNoEmployees(){
+
+    void setNoEmployees() {
         this->noEmployees = noEmployees;
     }
-    Org(string name, int noEmployees){          // Wywoływany jest automatycznie w momencie tworzeniea obiektu
+
+    Org(string name, int noEmployees) {          // Wywoływany jest automatycznie w momencie tworzeniea obiektu
         this->name = name;
         this->noEmployees = noEmployees;
     }
+
     void toString() {                            // napisowa reprezentacja obiektu -> wartości jego pol kalsowych
         cout << "Organization name: " << this->name << endl;
         cout << "Number of employees: " << this->noEmployees << endl;
     }
 };
+
 class Dep : Org {
 private:
     string head;
 public:
-    string getHead(){
+    string getHead() {
         return this->head;
     }
-    void setHead(string head){
+
+    void setHead(string head) {
         this->head = head;
     }
-    Dep(string name, int noEmployees, string head) : Org(name, noEmployees){
-        this-> head = head;
+
+    Dep(string name, int noEmployees, string head) : Org(name, noEmployees) {
+        this->head = head;
     }
-    void depToString(){
+
+    void depToString() {
         cout << "============================" << endl;
         toString(); // wywołanie metody toString z klasy Org
         cout << "Head info: " << this->head << endl;
     }
 };
-class Algorithms{
+
+class Algorithms {
 public:
-    bool isPrimary(int number){
+    bool isPrimary(int number) {
         // liczba podzielna bez reszty tylko przez 1 i samą siebie
-        if(number == 2){
+        if (number == 2) {
             return true;
         }
-        for(int i = 2; i < number; i++){
-            if(number % i == 0){
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
                 return false;
             }
         }
         return true;
     }
-    void getNPrimaryNumbers(int n){     // n - ilość szukanych liczb pierwszych
-        int foundedPrimaryNumbers= 0;   // licznik znalezionych liczb pierwszych
-        for(int i = 2; foundedPrimaryNumbers < n; i++){
+
+    void getNPrimaryNumbers(int n) {     // n - ilość szukanych liczb pierwszych
+        int foundedPrimaryNumbers = 0;   // licznik znalezionych liczb pierwszych
+        for (int i = 2; foundedPrimaryNumbers < n; i++) {
             // wywołanie funkcji sprawdzającej czy liczba jest pierwsza
-            if(isPrimary(i)){
+            if (isPrimary(i)) {
                 cout << i << " ";
                 foundedPrimaryNumbers++;    // każde znalezienie inkrementuje licznik
             }
         }
     }
+
+    int sumOfDiv(int number) {
+        int cumSum = 0;
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                cumSum += i;        // jeśłi dzielnik dzieli się bez reszty przez liczbę to dodajemy go do sumy skumulowanej
+            }
+        }
+        return cumSum;
+    }
+    bool isPerfectNumber(number){
+        // ??? 
+    }
 };
+
 int main() {
     Algorithms a;
-    a.getNPrimaryNumbers(10);
+//    a.getNPrimaryNumbers(10);
+    cout << a.sumOfDiv(6) << endl;
+    cout << a.sumOfDiv(3) << endl;
+    cout << a.sumOfDiv(20) << endl;
     return 0;
 }
 
