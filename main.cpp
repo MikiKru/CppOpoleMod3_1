@@ -308,6 +308,7 @@ public:
 
     // Napisz program zliczający statystykę występowania znaków "O","?","o", "*" w pliku z choinką
     void getStatsFromChristmasTree(string christmasTree){
+        cout << christmasTree << endl;
         int Ostats = 0;
         int Pstats = 0;
         int ostats = 0;
@@ -328,8 +329,41 @@ public:
         cout << "o wystepuje: " << ostats << "razy" << endl;
         cout << "* wystepuje: " << Sstats << "razy" << endl;
     }
-int main() {
-    getStatsFromChristmasTree(drawChristmasTree(10));
+    // linkedin.com
+
+    // TRY - CATCH
+    void division(int number1, int number2){
+        try {
+            double result = ((double) number1) / number2;
+            if(number2 == 0){       // sytuacja w której bede wyrzucał wyjątek
+                throw exception();
+            }
+            cout << result << endl;
+        } catch(exception& e){      // wyłapuje wystąpienie błędu klasy exception
+            cout << "Nie mozna dzielic przez zero!!!";  // obsługa błędu pojawia się wtedy gdy
+                                                        // wyjątek zostnie zgłoszony
+        }
+    }
+
+
+    int main() {
+        int num1, num2;
+        while(true) {
+            cout << "Podaj dwie liczby" << endl;
+            try {
+                cin >> num1 >> num2;
+                if (cin.fail()) {
+                    throw exception();
+                }
+                division(num1, num2);
+                break;
+            } catch (exception e) {
+                cin.clear();
+                cin.ignore(10000,'\n');
+                cout << "blad danych" << endl;
+
+            }
+        }
     return 0;
 }
 
