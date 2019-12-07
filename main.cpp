@@ -349,41 +349,41 @@ public:
 class MyException1 : exception{
     public:
         MyException1(){
-            cout << "Wyjątek nr 1" << endl;
+            cout << "Wyjatek nr 1" << endl;
         }
 };
 class MyException2 : exception{
 public:
     MyException2(){
-        cout << "Wyjątek nr 2" << endl;
+        cout << "Wyjatek nr 2" << endl;
     }
 };
 class MyException3 : exception{
 public:
     MyException3(){
-        cout << "Wyjątek nr 3" << endl;
+        cout << "Wyjatek nr 3" << endl;
     }
 };
 
-int main() {
-    srand(time(NULL));
-    try{
-        cout << "Losujemy wyjątki" << endl;
-        int los = rand() % 3;
-        if(los == 0){
-            throw MyException1();
-        } else if (los == 1){
-            throw MyException2();
+void fileNameValid(){
+    string fileName;
+    try {
+        cout << "Podaj nazwe pliku" << endl;
+        cin >> fileName;
+        ifstream file;
+        file.open(fileName + ".txt");
+        if (file.good()) {
+            cout << "PLIK ISTNIEJE" << endl;
         } else {
-            throw MyException3();
+            throw exception();
         }
-    } catch (MyException1 e){
-        cout << "Wyjątek 1" << endl;
-    } catch (MyException2 e){
-        cout << "Wyjątek 2" << endl;
-    } catch (MyException3){
-        cout << "Wyjątek 3" << endl;
+    }catch (exception e){
+        cout << "PLIK NIE ISTNIEJE" << endl;
     }
+}
+
+int main() {
+    fileNameValid();
     return 0;
 }
 
