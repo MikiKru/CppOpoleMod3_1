@@ -278,14 +278,25 @@ public:
             }
             // dodawanie gwiazdek
             for (int j = 1; j <= i; j++) {
-                cout << "*";
+                if(i == 1) {
+                    cout << "+";
+                } else {
+                    cout << "*";
+                }
             }
             cout << endl;
+            // noga
+            if(i == 2*n - 1){
+                for (int x = 1; x <= (2*n - i)/2; x++) {
+                    cout << " ";
+                }
+                cout << "U";
+            }
         }
     }
 
 int main() {
-    drawChristmasTree(15);
+    drawChristmasTree(14);
     return 0;
 }
 
