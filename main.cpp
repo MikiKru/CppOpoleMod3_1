@@ -231,17 +231,15 @@ public:
         }
         return cumSum;
     }
-    bool isPerfectNumber(number){
-        // ??? 
+    bool isPerfectNumber(int number){
+        return number == sumOfDiv(number);  // porównanie liczby z sumą dizelników zwracaną przez metodę sumOfDiv()
     }
 };
 
 int main() {
     Algorithms a;
 //    a.getNPrimaryNumbers(10);
-    cout << a.sumOfDiv(6) << endl;
-    cout << a.sumOfDiv(3) << endl;
-    cout << a.sumOfDiv(20) << endl;
+    cout << a.isPerfectNumber(6) << endl;
     return 0;
 }
 
