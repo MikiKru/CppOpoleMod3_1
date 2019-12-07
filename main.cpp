@@ -278,6 +278,7 @@ public:
             }
             // dodawanie gwiazdek
             for (int j = 1; j <= i; j++) {
+                string bombs [] = {"O","@","o"};
                 if(i == 1) {
                     cout << "+";
                 } else {
@@ -287,16 +288,16 @@ public:
             cout << endl;
             // noga
             if(i == 2*n - 1){
-                for (int x = 1; x <= (2*n - i)/2; x++) {
+                for (int x = 1; x <= (2*n - 1)/2; x++) {
                     cout << " ";
                 }
-                cout << "U";
+                cout << "H";
             }
         }
     }
 
 int main() {
-    drawChristmasTree(14);
+    drawChristmasTree(10);
     return 0;
 }
 
