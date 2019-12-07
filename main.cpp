@@ -298,7 +298,7 @@ public:
         }
         return christmasTree;
     }
-    void saveChristamsTree(string christmasTree){
+    void saveChristmasTree(string christmasTree){
         ofstream toFile;
         toFile.open("christmasTree.txt");
         toFile << christmasTree;
@@ -306,12 +306,35 @@ public:
         cout << "Choinka zostala zarchiwizowana" << endl;
     }
 
-
-
+    // Napisz program zliczający statystykę występowania znaków "O","?","o", "*" w pliku z choinką
+    void getStatsFromChristmasTree(string christmasTree){
+        int Ostats = 0;
+        int Pstats = 0;
+        int ostats = 0;
+        int Sstats = 0;
+        for (int i = 0; i < christmasTree.length() ; i++) {
+            if(christmasTree[i] == 'O'){
+                Ostats++;
+            } else if (christmasTree[i] == '?'){
+                Pstats++;
+            } else if (christmasTree[i] == 'o'){
+                ostats++;
+            } else if (christmasTree[i] == '*'){
+                Sstats++;
+            }
+        }
+        cout << "O wystepuje: " << Ostats << "razy" << endl;
+        cout << "? wystepuje: " << Pstats << "razy" << endl;
+        cout << "o wystepuje: " << ostats << "razy" << endl;
+        cout << "* wystepuje: " << Sstats << "razy" << endl;
+    }
 int main() {
-    saveChristamsTree(drawChristmasTree(10));
+    getStatsFromChristmasTree(drawChristmasTree(10));
     return 0;
 }
+
+
+
 
 
 
