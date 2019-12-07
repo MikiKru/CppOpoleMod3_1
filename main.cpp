@@ -332,7 +332,7 @@ public:
     // linkedin.com
 
     // TRY - CATCH
-    void division(int number1, int number2){
+    void division(double number1, double number2){
         try {
             double result = ((double) number1) / number2;
             if(number2 == 0){       // sytuacja w której bede wyrzucał wyjątek
@@ -346,24 +346,44 @@ public:
     }
 
 
-    int main() {
-        int num1, num2;
-        while(true) {
-            cout << "Podaj dwie liczby" << endl;
-            try {
-                cin >> num1 >> num2;
-                if (cin.fail()) {
-                    throw exception();
-                }
-                division(num1, num2);
-                break;
-            } catch (exception e) {
-                cin.clear();
-                cin.ignore(10000,'\n');
-                cout << "blad danych" << endl;
-
-            }
+class MyException1 : exception{
+    public:
+        MyException1(){
+            cout << "Wyjątek nr 1" << endl;
         }
+};
+class MyException2 : exception{
+public:
+    MyException2(){
+        cout << "Wyjątek nr 2" << endl;
+    }
+};
+class MyException3 : exception{
+public:
+    MyException3(){
+        cout << "Wyjątek nr 3" << endl;
+    }
+};
+
+int main() {
+    srand(time(NULL));
+    try{
+        cout << "Losujemy wyjątki" << endl;
+        int los = rand() % 3;
+        if(los == 0){
+            throw MyException1();
+        } else if (los == 1){
+            throw MyException2();
+        } else {
+            throw MyException3();
+        }
+    } catch (MyException1 e){
+        cout << "Wyjątek 1" << endl;
+    } catch (MyException2 e){
+        cout << "Wyjątek 2" << endl;
+    } catch (MyException3){
+        cout << "Wyjątek 3" << endl;
+    }
     return 0;
 }
 
