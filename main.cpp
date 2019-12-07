@@ -271,8 +271,12 @@ public:
     // **@**
     //****@**
     void drawChristmasTree(int n){
-
         for(int i = 1; i < 2*n; i = i + 2){
+            
+            for (int k = 0; k < ; ++k) {
+
+            }
+            // dodawanie gwiazdek
             for (int j = 1; j <= i; j++) {
                 cout << "*";
             }
@@ -281,7 +285,7 @@ public:
     }
 
 int main() {
-    drawChristmasTree(5);
+    drawChristmasTree(10);
     return 0;
 }
 
