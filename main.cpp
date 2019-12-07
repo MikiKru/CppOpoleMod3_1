@@ -149,6 +149,20 @@ public:
         cout << "Number of employees: " << this->noEmployees << endl;
     }
 };
+class Dep : Org {
+private:
+    string head;
+public:
+    string getHead(){
+        return this->head;
+    }
+    void setHead(string head){
+        this->head = head;
+    }
+};
+
+
+
 
 int main() {
     Org pnt("PNT", 300);
