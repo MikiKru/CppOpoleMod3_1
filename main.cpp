@@ -247,14 +247,17 @@ public:
 
         if(myFile.good()){
             cout << "Wprowadz tekst do pliku:" << endl;
-            string text;
-            cin >> text;
-            myFile << text;     // zawartośc zmiennej text wrzucam do pliku
+            string input;        // zmienna napisowa
+            getline(cin, input);    // wprowadzanie z cl do zmiennej ze spacjami
+            myFile << input;     // zawartośc zmiennej input wrzucam do pliku
+
         } else {
             cout << "cos poszlo nie tak" << endl;
         }
         myFile.close();         // zamknięcie strumienia danych plikowych
 
+        ifstream readMyFile;    // obiekt do obsługi odczytu z pliku
+        
     }
 
 int main() {
