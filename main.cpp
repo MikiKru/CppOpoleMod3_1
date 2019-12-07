@@ -242,22 +242,19 @@ public:
 //        ifstream: Stream class to read from files
 //        fstream: Stream class to both read and write from/to files.
 
-        ofstream myFile;         // obiekt do obsługi plików -> daje dostęp do metod operujących na systemach plikowych
-        myFile.open("myFile.txt");  // utworzy plik o nazwie myFile.txt w trybie odczyt lub zapis
+        ofstream myFile;         // obiekt do obsługi zapisu do pliku
+        myFile.open("myFile.txt");  // utworzy plik o nazwie myFile.txt
 
-
-        if(myFile.is_open()){
-            cout << "plik jest otwarty" << endl;
-            myFile << "text do pliku";
+        if(myFile.good()){
+            cout << "Wprowadz tekst do pliku:" << endl;
+            string text;
+            cin >> text;
+            myFile << text;     // zawartośc zmiennej text wrzucam do pliku
         } else {
-            cout << "plik zostal zamkniety" << endl;
+            cout << "cos poszlo nie tak" << endl;
         }
-        myFile.close();
-//        if(myFile.good()){
-//            cout << "Plik został poprawnie utworzony" << endl;
-//        } else {
-//            cout << "Ups! Cos poszlo nie tak!" << endl;
-//        }
+        myFile.close();         // zamknięcie strumienia danych plikowych
+
     }
 
 int main() {
