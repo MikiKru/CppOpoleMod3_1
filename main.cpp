@@ -159,14 +159,23 @@ public:
     void setHead(string head){
         this->head = head;
     }
+    Dep(string name, int noEmployees, string head) : Org(name, noEmployees){
+        this-> head = head;
+    }
+    void depToString(){
+        toString(); // wywołanie metody toString z klasy Org
+        cout << "Head info: " << this->head << endl;
+    }
 };
-
-
-
-
 int main() {
     Org pnt("PNT", 300);
     pnt.toString();
+    Dep marketing("PNT", 100, "Jan Kowalski");
+    Dep administration("PNT", 150, "Janusz Serwer");
+    Dep software("PNT", 50, "Mariusz Zima");
+    marketing.depToString();
+    administration.depToString();
+    software.depToString();
     return 0;
 }
 
